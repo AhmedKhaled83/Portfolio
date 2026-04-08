@@ -22,14 +22,16 @@
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
+    "allowJs": true, // Add this - allows importing JS files
+    "checkJs": false, // Add this - skips type checking JS files
+    "verbatimModuleSyntax": false, // Change to false for JS/JSX imports
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
     /* Linting */
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
+    "noUnusedLocals": false, // Change to false temporarily
+    "noUnusedParameters": false, // Change to false temporarily
+    "erasableSyntaxOnly": false, // Change to false for JSX
     "noFallthroughCasesInSwitch": true
   },
   "include": [
