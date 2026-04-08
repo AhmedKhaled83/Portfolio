@@ -47,9 +47,9 @@ export default function FloatingNav() {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: 100, opacity: 0 }}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50"
+                    className="fixed inset-x-0 bottom-6 z-50 flex justify-center px-4"
                 >
-                    <div className="flex items-center gap-1 px-2 py-2 rounded-2xl bg-card/80 backdrop-blur-xl border border-border/50 shadow-2xl shadow-primary/10">
+                    <div className="inline-flex min-w-max flex-nowrap items-center gap-1 overflow-x-auto rounded-2xl bg-card/80 backdrop-blur-xl border border-border/50 shadow-2xl shadow-primary/10 px-2 py-2 no-scrollbar">
                         {navItems.map((item) => {
                             const Icon = item.icon;
                             const isActive = active === item.id;
@@ -57,7 +57,7 @@ export default function FloatingNav() {
                                 <button
                                     key={item.id}
                                     onClick={() => scrollTo(item.id)}
-                                    className={`relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${isActive
+                                    className={`relative flex shrink-0 items-center gap-2 px-3 sm:px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${isActive
                                         ? "text-primary-foreground"
                                         : "text-muted-foreground hover:text-foreground"
                                         }`}
