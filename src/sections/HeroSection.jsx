@@ -1,40 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, Linkedin, Github, Download, Briefcase, Rocket, Users } from "lucide-react";
-import ProfileImg from "../../assets/profile.jpg";
+import { MapPin, Mail, Phone, Linkedin, Github, Download } from "lucide-react";
+import HeroPortrait from "@/components/hero/HeroPortrait";
+import { profile, heroStats, heroTechStack } from "@/data/profile";
 
-const techStack = ["React Native", "React.js", "TypeScript", "Redux Toolkit", "Zustand", "TanStack Query"];
-
-function FloatCard({ icon: Icon, value, label, className, delay }) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
-            transition={{
-                opacity: { duration: 0.5, delay: 0.8 + delay * 0.15 },
-                scale: { duration: 0.5, delay: 0.8 + delay * 0.15 },
-                y: { duration: 4 + delay * 0.5, repeat: Infinity, ease: "easeInOut", delay: delay * 0.4 },
-            }}
-            className={`absolute z-10 flex items-center gap-3 px-3 py-2.5 sm:px-4 sm:py-3 rounded-2xl bg-card/80 backdrop-blur-xl border border-border/60 shadow-xl shadow-black/30 ${className}`}
-        >
-            <span className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-primary text-primary-foreground shrink-0">
-                <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
-            </span>
-            <span className="text-left">
-                <span className="block text-lg sm:text-xl font-bold text-foreground leading-none">{value}</span>
-                <span className="block font-mono text-[10px] uppercase tracking-wider text-muted-foreground mt-1 whitespace-nowrap">{label}</span>
-            </span>
-        </motion.div>
-    );
-}
-
-export default function HeroSection({ heroImage }) {
-    // Function to handle resume download
+export default function HeroSection() {
     const handleDownloadResume = () => {
-        // Replace this with your actual resume file path
-        const resumeUrl = "https://drive.google.com/file/d/1xnPd3KS_bwnODD13hfddM6M-KyxC90tS/view?usp=drivesdk";
-
-        window.open(resumeUrl, "_blank", "noopener noreferrer");
+        window.open(profile.resumeUrl, "_blank", "noopener,noreferrer");
     };
 
     return (
@@ -54,59 +26,7 @@ export default function HeroSection({ heroImage }) {
             />
 
             <div className="relative z-10 max-w-6xl mx-auto px-6 py-28 lg:py-32 grid lg:grid-cols-[1fr_auto] gap-14 lg:gap-16 items-center">
-                {/* Portrait */}
-                <motion.div
-                    initial={{ opacity: 0, x: 40 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.9, ease: "easeOut" }}
-                    className="relative mx-auto w-64 sm:w-80 lg:w-[24rem] lg:order-last"
-                >
-                    {/* Glow */}
-                    <div className="absolute -inset-8 rounded-[3rem] bg-gradient-primary opacity-25 blur-3xl" />
-                    {/* Dot pattern */}
-                    <div
-                        className="absolute -top-8 -right-8 w-36 h-36 opacity-40"
-                        style={{
-                            backgroundImage: 'radial-gradient(hsl(var(--accent)) 1.5px, transparent 1.5px)',
-                            backgroundSize: '14px 14px'
-                        }}
-                    />
-                    {/* Offset outline */}
-                    <div className="absolute inset-0 translate-x-4 translate-y-4 sm:translate-x-5 sm:translate-y-5 rounded-[2rem] border-2 border-primary/40" />
-
-                    {/* Photo */}
-                    <div className="relative overflow-hidden rounded-[2rem] bg-card aspect-[3/4] shadow-2xl shadow-primary/30">
-                        <img
-                            src={ProfileImg}
-                            alt="Ahmed Khaled Khalil"
-                            className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/60 to-transparent" />
-                    </div>
-
-                    {/* Floating cards */}
-                    <FloatCard
-                        icon={Briefcase}
-                        value="3+"
-                        label="Years experience"
-                        className="-left-6 sm:-left-12 top-8"
-                        delay={0}
-                    />
-                    <FloatCard
-                        icon={Rocket}
-                        value="10+"
-                        label="Apps shipped"
-                        className="-right-4 sm:-right-10 top-[42%]"
-                        delay={1}
-                    />
-                    <FloatCard
-                        icon={Users}
-                        value="400K+"
-                        label="Users reached"
-                        className="-left-4 sm:-left-8 bottom-10"
-                        delay={2}
-                    />
-                </motion.div>
+                <HeroPortrait src={profile.photo} alt={profile.fullName} stats={heroStats} />
 
                 <div className="text-center lg:text-left">
                 {/* Status badge */}
@@ -129,8 +49,8 @@ export default function HeroSection({ heroImage }) {
                     transition={{ duration: 0.7, delay: 0.1 }}
                     className="text-5xl sm:text-7xl font-bold tracking-tight mb-4"
                 >
-                    <span className="bg-gradient-white bg-clip-text text-transparent">Ahmed Khaled</span>
-                    <span className="block bg-gradient-primary bg-clip-text text-transparent mt-2">Khalil</span>
+                    <span className="bg-gradient-white bg-clip-text text-transparent">{profile.firstName}</span>
+                    <span className="block bg-gradient-primary bg-clip-text text-transparent mt-2">{profile.lastName}</span>
                 </motion.h1>
 
                 {/* Title with mono font */}
@@ -140,7 +60,7 @@ export default function HeroSection({ heroImage }) {
                     transition={{ duration: 0.6, delay: 0.3 }}
                     className="text-base sm:text-xl md:text-2xl font-mono font-semibold text-accent mb-6"
                 >
-                    React & React Native Developer
+                    {profile.title}
                 </motion.p>
 
                 {/* Bio description */}
@@ -165,26 +85,26 @@ export default function HeroSection({ heroImage }) {
                 >
                     <div className="flex items-center gap-1.5 bg-background/50 px-3 py-1.5 rounded-full backdrop-blur-sm border border-border/50">
                         <MapPin className="w-3.5 h-3.5 text-primary" />
-                        <span className="text-muted-foreground font-medium">Giza, Egypt</span>
+                        <span className="text-muted-foreground font-medium">{profile.location}</span>
                     </div>
                     <span className="hidden sm:inline text-border/50">•</span>
                     <a
-                        href="mailto:ahmedkd628@gmail.com"
+                        href={`mailto:${profile.email}`}
                         className="flex items-center gap-1.5 bg-background/50 px-3 py-1.5 rounded-full backdrop-blur-sm border border-border/50 hover:border-accent/30 hover:bg-accent/10 transition-all duration-300 group"
                     >
                         <Mail className="w-3.5 h-3.5 text-primary group-hover:text-accent transition-colors" />
                         <span className="text-muted-foreground font-medium group-hover:text-accent transition-colors">
-                            ahmedkd628@gmail.com
+                            {profile.email}
                         </span>
                     </a>
                     <span className="hidden sm:inline text-border/50">•</span>
                     <a
-                        href="tel:+201002068758"
+                        href={`tel:${profile.phone}`}
                         className="flex items-center gap-1.5 bg-background/50 px-3 py-1.5 rounded-full backdrop-blur-sm border border-border/50 hover:border-accent/30 hover:bg-accent/10 transition-all duration-300 group"
                     >
                         <Phone className="w-3.5 h-3.5 text-primary group-hover:text-accent transition-colors" />
                         <span className="text-muted-foreground font-medium group-hover:text-accent transition-colors">
-                            +201002068758
+                            {profile.phone}
                         </span>
                     </a>
                 </motion.div>
@@ -197,7 +117,7 @@ export default function HeroSection({ heroImage }) {
                     className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
                 >
                     <a
-                        href="https://www.linkedin.com/in/ahmed-khaled-developer/"
+                        href={profile.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-semibold text-sm tracking-wide hover:from-primary/90 hover:to-primary/70 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-primary/25"
@@ -206,7 +126,7 @@ export default function HeroSection({ heroImage }) {
                         LinkedIn
                     </a>
                     <a
-                        href="https://github.com/AhmedKhaled83"
+                        href={profile.github}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-background/20 backdrop-blur-sm text-foreground font-semibold text-sm tracking-wide hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 hover:scale-105"
@@ -232,7 +152,7 @@ export default function HeroSection({ heroImage }) {
                 >
                     <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-3">Tech I work with</p>
                     <div className="flex flex-wrap justify-center lg:justify-start gap-2">
-                        {techStack.map((tech) => (
+                        {heroTechStack.map((tech) => (
                             <span
                                 key={tech}
                                 className="px-3 py-1.5 rounded-lg bg-secondary/60 border border-border/50 text-xs font-medium text-foreground/80 hover:border-primary/40 hover:text-primary transition-colors"

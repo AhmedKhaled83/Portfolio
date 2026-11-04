@@ -1,0 +1,66 @@
+export const experiences = [
+    {
+        company: "Nice Deer",
+        linkedIn: "https://www.linkedin.com/company/nice-deer/",
+        role: "React, React Native Developer",
+        period: "August 2025 – Present",
+        highlights: [
+            "Published 10+ production mobile applications and 3 websites, contributing across the full product lifecycle from development to release on App Store, Google Play, and web.",
+            "Contributed to updating and enhancing a company website, now serving ~1 million users, improving performance and user experience at scale.",
+            "Developed and maintained a Banking mobile application serving ~50K users, increasing application security by ~40% through JWT, OAuth 2.0, encryption, and biometric authentication aligned with OWASP Mobile Security standards.",
+            "Delivered a ~60% performance improvement across a high-traffic Medical Insurance application (100K+ users) by re-architecting state management, optimizing component rendering, and eliminating unnecessary API calls.",
+            "Delivered new E-commerce and Web platforms from the ground up, while modernizing legacy systems with current best practices to boost performance and maintainability.",
+            "Established code review and security standards adopted across the team, mentoring team members on secure coding practices.",
+            "Served as the lead developer for a dedicated project, taking full ownership of technical direction, architecture decisions, and feature delivery from planning through release.",
+        ],
+        stack: ["React Native", "React", "TypeScript", "Redux Toolkit", "Zustand", "TanStack Query", "OWASP"],
+    },
+    {
+        company: "LOGIN HR System",
+        linkedIn: "https://www.linkedin.com/company/login-systems/",
+        role: "React Native Developer (Part-Time)",
+        period: "September 2024 – January 2025",
+        highlights: [
+            "Built an E-commerce mobile application from scratch (0 to 1), serving 10K+ users, laying the technical foundation from initial architecture through first release.",
+            "Collaborated closely with UX/UI designers and product managers to translate Figma/Sketch designs into intuitive, responsive interfaces.",
+            "Implemented secure and scalable mobile features with a focus on performance and clean architecture, ensuring a smooth user experience from launch.",
+        ],
+        stack: ["React Native", "JavaScript", "E-commerce", "Figma"],
+    },
+    {
+        company: "IT Fusion",
+        linkedIn: "https://www.linkedin.com/company/it-fusion-software-house/",
+        role: "React, React Native Developer",
+        period: "March 2023 – January 2025",
+        highlights: [
+            "Built a Medical mobile application from scratch, scaling to serve 400K+ users, establishing core architecture, state management, and API integration from the ground up.",
+            "Upgraded legacy applications with new features and modern technical practices, and modernized outdated websites using MVC architecture to improve structure and maintainability.",
+            "Contributed to E-commerce, FinTech, and Web platforms, translating Figma/Sketch designs into responsive, high-quality user interfaces.",
+            "Participated in code reviews, offered constructive feedback, and helped maintain high code quality across the team.",
+            "Integrated RESTful APIs and managed application state using Redux, deploying applications via App Store and Google Play.",
+        ],
+        stack: ["React Native", "React", "Redux", "MVC", "REST APIs"],
+    },
+    {
+        company: "Sarri Technology",
+        linkedIn: "https://www.linkedin.com/company/sari-it-technology/",
+        role: "React, React Native Developer",
+        period: "October 2022 – March 2023",
+        highlights: [
+            "Developed, maintained, and deployed Android and iOS applications, working alongside cross-functional teams to scope requirements and ship to production.",
+            "Built an E-commerce mobile application and an HR System mobile application from scratch, each scaling to 10K+ users, from initial development through release.",
+        ],
+        stack: ["React Native", "React", "Android", "iOS"],
+    },
+    {
+        company: "Mono Company",
+        linkedIn: "https://www.linkedin.com/company/mono-services/",
+        role: "React Native Developer",
+        period: "May 2022 – August 2022",
+        highlights: [
+            "Built the company's first E-commerce mobile application, setting up the initial technical foundation — architecture, state handling, and API connections — for both iOS and Android.",
+            "Partnered with the design and QA team to align on requirements and deliver the company's first stable production release across iOS and Android.",
+        ],
+        stack: ["React Native", "Android", "iOS"],
+    },
+];

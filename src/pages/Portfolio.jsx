@@ -1,26 +1,26 @@
 import React from "react";
-import HeroSection from "../portfolio/HeroSection";
-import ExperienceTimeline from "../portfolio/ExperienceTimeline";
-import SkillsGrid from "../portfolio/SkillsGrid";
-import EducationSection from "../portfolio/EducationSection";
-import ProjectsSection from "../portfolio/ProjectsSection";
-import ContactFooter from "../portfolio/ContactFooter";
-import FloatingNav from "../portfolio/FloatingNav";
-
-const HERO_IMAGE = '../assets/bg/bg1.png';
-const SKILLS_IMAGE = '../assets/bg/bg2.png';
+import FloatingNav from "@/components/layout/FloatingNav";
+import Footer from "@/components/layout/Footer";
+import HeroSection from "@/sections/HeroSection";
+import ExperienceSection from "@/sections/ExperienceSection";
+import SkillsSection from "@/sections/SkillsSection";
+import EducationSection from "@/sections/EducationSection";
+import ProjectsSection from "@/sections/ProjectsSection";
+import ContactSection from "@/sections/ContactSection";
 
 export default function Portfolio() {
     return (
         <div className="min-h-screen text-foreground font-sans">
             <FloatingNav />
-            <HeroSection heroImage={HERO_IMAGE} />
-            <ExperienceTimeline />
-            <SkillsGrid skillsImage={SKILLS_IMAGE} />
-            <EducationSection />
-            <ProjectsSection />
-            {/* <TestimonialsSection /> */}
-            <ContactFooter />
+            <main>
+                <HeroSection />
+                <ExperienceSection />
+                <SkillsSection />
+                <EducationSection />
+                <ProjectsSection />
+                <ContactSection />
+            </main>
+            <Footer />
         </div>
     );
 }

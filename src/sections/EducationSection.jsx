@@ -1,90 +1,65 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { GraduationCap, BookOpen } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { fadeUp, fadeLeft, fadeRight, staggerContainer, viewportOnce } from "@/lib/animationVariants";
+import Section from "@/components/common/Section";
+import SectionHeader from "@/components/common/SectionHeader";
+import TechBadge from "@/components/common/TechBadge";
+import { fadeLeft, fadeRight, viewportOnce } from "@/lib/animationVariants";
+import { degree, courses } from "@/data/education";
 
-const courses = [
-    "React & React Native – Udacity",
-    "JavaScript ES6 – Udacity",
-    "Redux Toolkit",
-];
+function InfoCard({ variants, icon: Icon, tone = "primary", children }) {
+    const toneClasses = tone === "accent"
+        ? { card: "hover:border-accent/30", iconBox: "bg-accent/10", icon: "text-accent" }
+        : { card: "hover:border-primary/30", iconBox: "bg-primary/10", icon: "text-primary" };
+
+    return (
+        <motion.div
+            variants={variants}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className={`p-8 rounded-2xl bg-card/50 border border-border/50 transition-all duration-500 ${toneClasses.card}`}
+        >
+            <div className="flex items-start gap-4">
+                <div className={`p-3 rounded-xl ${toneClasses.iconBox}`}>
+                    <Icon className={`w-6 h-6 ${toneClasses.icon}`} />
+                </div>
+                <div>{children}</div>
+            </div>
+        </motion.div>
+    );
+}
 
 export default function EducationSection() {
     return (
-        <section id="education" className="relative py-24 sm:py-32 px-6">
-            <div className="max-w-5xl mx-auto">
-                {/* Section header */}
-                <motion.div
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={viewportOnce}
-                    className="mb-16"
-                >
-                    <span className="font-mono text-sm text-accent tracking-widest uppercase">// Education</span>
-                    <h2 className="text-4xl sm:text-5xl font-bold mt-3 text-foreground">Academic Foundation</h2>
-                </motion.div>
+        <Section id="education">
+            <SectionHeader eyebrow="Education" title="Academic Foundation" />
 
-                <div className="grid sm:grid-cols-2 gap-6">
-                    {/* Degree */}
-                    <motion.div
-                        variants={fadeLeft}
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={viewportOnce}
-                        className="p-8 rounded-2xl bg-card/50 border border-border/50 hover:border-primary/30 transition-all duration-500"
-                    >
-                        ...
-                        <div className="flex items-start gap-4">
-                            <div className="p-3 rounded-xl bg-primary/10">
-                                <GraduationCap className="w-6 h-6 text-primary" />
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-bold text-foreground">Tanta University</h3>
-                                <p className="text-muted-foreground mt-1">Faculty of Computer and Information Systems</p>
-                                <p className="text-foreground font-medium mt-2">B.Sc. Computer Science</p>
-                                <div className="flex items-center gap-3 mt-3">
-                                    <Badge variant="outline" className="border-primary/20 text-primary bg-primary/5 font-mono text-xs">
-                                        Very Good - B+
-                                    </Badge>
-                                    <span className="font-mono text-xs text-muted-foreground">
-                                        09/2020 – 06/2024
-                                    </span>
-                                </div>
-                                <p className="text-sm text-muted-foreground mt-2">Tanta, Egypt</p>
-                            </div>
-                        </div>
-                    </motion.div>
+            <div className="grid sm:grid-cols-2 gap-6">
+                <InfoCard variants={fadeLeft} icon={GraduationCap}>
+                    <h3 className="text-xl font-bold text-foreground">{degree.university}</h3>
+                    <p className="text-muted-foreground mt-1">{degree.faculty}</p>
+                    <p className="text-foreground font-medium mt-2">{degree.title}</p>
+                    <div className="flex items-center gap-3 mt-3">
+                        <TechBadge>{degree.grade}</TechBadge>
+                        <span className="font-mono text-xs text-muted-foreground">{degree.period}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mt-2">{degree.location}</p>
+                </InfoCard>
 
-                    {/* Courses */}
-                    <motion.div
-                        variants={fadeRight}
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={viewportOnce}
-                        className="p-8 rounded-2xl bg-card/50 border border-border/50 hover:border-accent/30 transition-all duration-500"
-                    >
-                        <div className="flex items-start gap-4">
-                            <div className="p-3 rounded-xl bg-accent/10">
-                                <BookOpen className="w-6 h-6 text-accent" />
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-bold text-foreground">Professional Courses</h3>
-                                <p className="text-muted-foreground mt-1">Continuous learning & certifications</p>
-                                <ul className="mt-4 space-y-3">
-                                    {courses.map((course, i) => (
-                                        <li key={i} className="flex items-center gap-3 text-sm text-foreground">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
-                                            {course}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
+                <InfoCard variants={fadeRight} icon={BookOpen} tone="accent">
+                    <h3 className="text-xl font-bold text-foreground">Professional Courses</h3>
+                    <p className="text-muted-foreground mt-1">Continuous learning & certifications</p>
+                    <ul className="mt-4 space-y-3">
+                        {courses.map((course) => (
+                            <li key={course} className="flex items-center gap-3 text-sm text-foreground">
+                                <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                                {course}
+                            </li>
+                        ))}
+                    </ul>
+                </InfoCard>
             </div>
-        </section>
+        </Section>
     );
 }

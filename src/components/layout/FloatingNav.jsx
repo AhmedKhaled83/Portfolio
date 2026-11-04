@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Briefcase, Zap, GraduationCap, Mail } from "lucide-react";
-
-const navItems = [
-    { id: "experience", label: "Work", icon: Briefcase },
-    { id: "skills", label: "Skills", icon: Zap },
-    { id: "projects", label: "Projects", icon: GraduationCap },
-    { id: "contact", label: "Connect", icon: Mail },
-];
+import { navItems } from "@/data/navigation";
 
 export default function FloatingNav() {
     const [active, setActive] = useState("");

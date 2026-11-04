@@ -1,8 +1,8 @@
-import { Toaster } from "./components/ui/toaster";
+import { Toaster } from "@/components/ui/toaster";
 import { queryClientInstance } from '@/lib/query-client';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import Portfolio from './components/pages/Portfolio';
+import Portfolio from '@/pages/Portfolio';
 
 const AuthenticatedApp = () => {
 
