@@ -9,8 +9,8 @@ module.exports = {
                 mono: ['var(--font-mono)'],
             },
             backgroundImage: {
-                'gradient-primary': 'linear-gradient(135deg, hsl(242 56% 63%), hsl(195 100% 50%))',
-                'gradient-white': 'linear-gradient(135deg, hsl(0 0% 90%), hsl(0 0% 70%))',
+                'gradient-primary': 'linear-gradient(135deg, hsl(258 90% 66%), hsl(172 66% 50%))',
+                'gradient-white': 'linear-gradient(135deg, hsl(228 40% 97%), hsl(228 22% 74%))',
             },
             borderRadius: {
                 lg: 'var(--radius)',

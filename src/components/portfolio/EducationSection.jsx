@@ -46,7 +46,7 @@ export default function EducationSection() {
                                 <p className="text-foreground font-medium mt-2">B.Sc. Computer Science</p>
                                 <div className="flex items-center gap-3 mt-3">
                                     <Badge variant="outline" className="border-primary/20 text-primary bg-primary/5 font-mono text-xs">
-                                        Very Good
+                                        Very Good - B+
                                     </Badge>
                                     <span className="font-mono text-xs text-muted-foreground">
                                         09/2020 – 06/2024

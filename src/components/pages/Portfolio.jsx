@@ -12,7 +12,7 @@ const SKILLS_IMAGE = '../assets/bg/bg2.png';
 
 export default function Portfolio() {
     return (
-        <div className="min-h-screen bg-background text-foreground font-sans">
+        <div className="min-h-screen text-foreground font-sans">
             <FloatingNav />
             <HeroSection heroImage={HERO_IMAGE} />
             <ExperienceTimeline />

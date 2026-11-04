@@ -5,27 +5,27 @@
 
 @layer base {
   :root {
-    --background: 0 0% 2%;
-    --foreground: 0 0% 90%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 90%;
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 90%;
-    --primary: 242 56% 63%;
+    --background: 230 35% 7%;
+    --foreground: 228 40% 95%;
+    --card: 230 30% 11%;
+    --card-foreground: 228 40% 95%;
+    --popover: 230 30% 11%;
+    --popover-foreground: 228 40% 95%;
+    --primary: 258 90% 66%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 90%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 56%;
-    --accent: 195 100% 50%;
-    --accent-foreground: 0 0% 2%;
+    --secondary: 230 25% 15%;
+    --secondary-foreground: 228 40% 95%;
+    --muted: 230 25% 15%;
+    --muted-foreground: 228 18% 68%;
+    --accent: 172 66% 50%;
+    --accent-foreground: 230 35% 7%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 242 56% 63%;
-    --chart-1: 242 56% 63%;
-    --chart-2: 195 100% 50%;
+    --border: 230 22% 20%;
+    --input: 230 22% 20%;
+    --ring: 258 90% 66%;
+    --chart-1: 258 90% 66%;
+    --chart-2: 172 66% 50%;
     --chart-3: 0 0% 56%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
@@ -36,27 +36,27 @@
   }
 
   .dark {
-    --background: 0 0% 2%;
-    --foreground: 0 0% 90%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 90%;
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 90%;
-    --primary: 242 56% 63%;
+    --background: 230 35% 7%;
+    --foreground: 228 40% 95%;
+    --card: 230 30% 11%;
+    --card-foreground: 228 40% 95%;
+    --popover: 230 30% 11%;
+    --popover-foreground: 228 40% 95%;
+    --primary: 258 90% 66%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 90%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 56%;
-    --accent: 195 100% 50%;
-    --accent-foreground: 0 0% 2%;
+    --secondary: 230 25% 15%;
+    --secondary-foreground: 228 40% 95%;
+    --muted: 230 25% 15%;
+    --muted-foreground: 228 18% 68%;
+    --accent: 172 66% 50%;
+    --accent-foreground: 230 35% 7%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 242 56% 63%;
-    --chart-1: 242 56% 63%;
-    --chart-2: 195 100% 50%;
+    --border: 230 22% 20%;
+    --input: 230 22% 20%;
+    --ring: 258 90% 66%;
+    --chart-1: 258 90% 66%;
+    --chart-2: 172 66% 50%;
     --chart-3: 0 0% 56%;
     --chart-4: 43 74% 66%;
     --chart-5: 340 75% 55%;
@@ -70,6 +70,10 @@
 
   body {
     @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(60rem 40rem at 10% -10%, hsl(258 90% 66% / 0.12), transparent 60%),
+      radial-gradient(50rem 35rem at 100% 30%, hsl(172 66% 50% / 0.07), transparent 60%);
+    background-attachment: fixed;
     font-family: var(--font-sans);
     font-weight: 400;
     line-height: 1.6;
@@ -102,16 +106,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(0 0% 5%);
+  background: hsl(230 35% 7%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(242 56% 63% / 0.4);
+  background: hsl(258 90% 66% / 0.4);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(242 56% 63% / 0.6);
+  background: hsl(258 90% 66% / 0.6);
 }
 
 /* Smooth scroll */
@@ -121,7 +125,7 @@ html {
 
 /* Selection */
 ::selection {
-  background: hsl(242 56% 63% / 0.3);
+  background: hsl(258 90% 66% / 0.3);
   color: white;
 }
 
@@ -129,21 +133,21 @@ html {
 
 @layer utilities {
   .text-gradient-white {
-    background: linear-gradient(135deg, hsl(0 0% 90%) 0%, hsl(0 0% 70%) 100%);
+    background: linear-gradient(135deg, hsl(228 40% 97%) 0%, hsl(228 22% 74%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
   .text-gradient-primary {
-    background: linear-gradient(135deg, hsl(242 56% 63%) 0%, hsl(195 100% 50%) 100%);
+    background: linear-gradient(135deg, hsl(258 90% 66%) 0%, hsl(172 66% 50%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
   .text-gradient-accent {
-    background: linear-gradient(135deg, hsl(195 100% 50%) 0%, hsl(242 56% 63%) 100%);
+    background: linear-gradient(135deg, hsl(172 66% 50%) 0%, hsl(258 90% 66%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

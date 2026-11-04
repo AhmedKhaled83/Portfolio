@@ -1,6 +1,32 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, Linkedin, Github, Download } from "lucide-react";
+import { MapPin, Mail, Phone, Linkedin, Github, Download, Briefcase, Rocket, Users } from "lucide-react";
+import ProfileImg from "../../assets/profile.jpg";
+
+const techStack = ["React Native", "React.js", "TypeScript", "Redux Toolkit", "Zustand", "TanStack Query"];
+
+function FloatCard({ icon: Icon, value, label, className, delay }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
+            transition={{
+                opacity: { duration: 0.5, delay: 0.8 + delay * 0.15 },
+                scale: { duration: 0.5, delay: 0.8 + delay * 0.15 },
+                y: { duration: 4 + delay * 0.5, repeat: Infinity, ease: "easeInOut", delay: delay * 0.4 },
+            }}
+            className={`absolute z-10 flex items-center gap-3 px-3 py-2.5 sm:px-4 sm:py-3 rounded-2xl bg-card/80 backdrop-blur-xl border border-border/60 shadow-xl shadow-black/30 ${className}`}
+        >
+            <span className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-primary text-primary-foreground shrink-0">
+                <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+            </span>
+            <span className="text-left">
+                <span className="block text-lg sm:text-xl font-bold text-foreground leading-none">{value}</span>
+                <span className="block font-mono text-[10px] uppercase tracking-wider text-muted-foreground mt-1 whitespace-nowrap">{label}</span>
+            </span>
+        </motion.div>
+    );
+}
 
 export default function HeroSection({ heroImage }) {
     // Function to handle resume download
@@ -13,25 +39,76 @@ export default function HeroSection({ heroImage }) {
 
     return (
         <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Background Image */}
+            {/* Background glow */}
             <div className="absolute inset-0 z-0">
-                <img
-                    src={heroImage}
-                    alt="Abstract tech background"
-                    className="w-full h-full object-cover opacity-20"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+                <div className="absolute right-[5%] top-[15%] w-[38rem] h-[38rem] rounded-full bg-primary/20 blur-[120px]" />
+                <div className="absolute left-[10%] bottom-[10%] w-[24rem] h-[24rem] rounded-full bg-accent/10 blur-[120px]" />
             </div>
 
             {/* Grid Lines Overlay */}
             <div className="absolute inset-0 z-0 opacity-[0.03]"
                 style={{
-                    backgroundImage: 'linear-gradient(hsl(242 56% 63% / 0.5) 0.5px, transparent 0.5px), linear-gradient(90deg, hsl(242 56% 63% / 0.5) 0.5px, transparent 0.5px)',
+                    backgroundImage: 'linear-gradient(hsl(258 90% 66% / 0.5) 0.5px, transparent 0.5px), linear-gradient(90deg, hsl(258 90% 66% / 0.5) 0.5px, transparent 0.5px)',
                     backgroundSize: '80px 80px'
                 }}
             />
 
-            <div className="relative z-10 max-w-5xl mx-auto px-6 py-32 text-center">
+            <div className="relative z-10 max-w-6xl mx-auto px-6 py-28 lg:py-32 grid lg:grid-cols-[1fr_auto] gap-14 lg:gap-16 items-center">
+                {/* Portrait */}
+                <motion.div
+                    initial={{ opacity: 0, x: 40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.9, ease: "easeOut" }}
+                    className="relative mx-auto w-64 sm:w-80 lg:w-[24rem] lg:order-last"
+                >
+                    {/* Glow */}
+                    <div className="absolute -inset-8 rounded-[3rem] bg-gradient-primary opacity-25 blur-3xl" />
+                    {/* Dot pattern */}
+                    <div
+                        className="absolute -top-8 -right-8 w-36 h-36 opacity-40"
+                        style={{
+                            backgroundImage: 'radial-gradient(hsl(var(--accent)) 1.5px, transparent 1.5px)',
+                            backgroundSize: '14px 14px'
+                        }}
+                    />
+                    {/* Offset outline */}
+                    <div className="absolute inset-0 translate-x-4 translate-y-4 sm:translate-x-5 sm:translate-y-5 rounded-[2rem] border-2 border-primary/40" />
+
+                    {/* Photo */}
+                    <div className="relative overflow-hidden rounded-[2rem] bg-card aspect-[3/4] shadow-2xl shadow-primary/30">
+                        <img
+                            src={ProfileImg}
+                            alt="Ahmed Khaled Khalil"
+                            className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/60 to-transparent" />
+                    </div>
+
+                    {/* Floating cards */}
+                    <FloatCard
+                        icon={Briefcase}
+                        value="3+"
+                        label="Years experience"
+                        className="-left-6 sm:-left-12 top-8"
+                        delay={0}
+                    />
+                    <FloatCard
+                        icon={Rocket}
+                        value="10+"
+                        label="Apps shipped"
+                        className="-right-4 sm:-right-10 top-[42%]"
+                        delay={1}
+                    />
+                    <FloatCard
+                        icon={Users}
+                        value="400K+"
+                        label="Users reached"
+                        className="-left-4 sm:-left-8 bottom-10"
+                        delay={2}
+                    />
+                </motion.div>
+
+                <div className="text-center lg:text-left">
                 {/* Status badge */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -50,7 +127,7 @@ export default function HeroSection({ heroImage }) {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.1 }}
-                    className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight mb-4"
+                    className="text-5xl sm:text-7xl font-bold tracking-tight mb-4"
                 >
                     <span className="bg-gradient-white bg-clip-text text-transparent">Ahmed Khaled</span>
                     <span className="block bg-gradient-primary bg-clip-text text-transparent mt-2">Khalil</span>
@@ -71,11 +148,12 @@ export default function HeroSection({ heroImage }) {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="max-w-2xl mx-auto text-muted-foreground leading-relaxed mb-10 text-sm sm:text-base md:text-lg"
+                    className="max-w-2xl mx-auto lg:mx-0 text-muted-foreground leading-relaxed mb-10 text-sm sm:text-base md:text-lg"
                 >
-                    3+ years of experience architecting high-performance cross-platform mobile applications.
-                    Specializing in <span className="text-primary font-semibold">React Native</span>, <span className="text-primary font-semibold">TypeScript</span>,
-                    and scalable app architecture across eCommerce, medical insurance, and fintech industries.
+                    Senior React Native Developer with 3+ years of experience building high-performance mobile applications for iOS and Android,
+                    with a strong focus on <span className="text-primary font-semibold">Banking</span> and <span className="text-primary font-semibold">FinTech</span>.
+                    Skilled in <span className="text-primary font-semibold">React Native</span>, React.js, <span className="text-primary font-semibold">TypeScript</span>,
+                    and modern state management (Redux, Zustand, TanStack Query).
                 </motion.p>
 
                 {/* Location & Contact */}
@@ -83,11 +161,11 @@ export default function HeroSection({ heroImage }) {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.5 }}
-                    className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-10 text-xs sm:text-sm"
+                    className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-4 mb-10 text-xs sm:text-sm"
                 >
                     <div className="flex items-center gap-1.5 bg-background/50 px-3 py-1.5 rounded-full backdrop-blur-sm border border-border/50">
                         <MapPin className="w-3.5 h-3.5 text-primary" />
-                        <span className="text-muted-foreground font-medium">Maadi, Egypt  </span>
+                        <span className="text-muted-foreground font-medium">Giza, Egypt</span>
                     </div>
                     <span className="hidden sm:inline text-border/50">•</span>
                     <a
@@ -116,7 +194,7 @@ export default function HeroSection({ heroImage }) {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.6 }}
-                    className="flex flex-wrap items-center justify-center gap-4"
+                    className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
                 >
                     <a
                         href="https://www.linkedin.com/in/ahmed-khaled-developer/"
@@ -144,6 +222,27 @@ export default function HeroSection({ heroImage }) {
                         Download Resume
                     </button>
                 </motion.div>
+
+                {/* Tech stack */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.75 }}
+                    className="mt-10 pt-8 border-t border-border/50"
+                >
+                    <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground mb-3">Tech I work with</p>
+                    <div className="flex flex-wrap justify-center lg:justify-start gap-2">
+                        {techStack.map((tech) => (
+                            <span
+                                key={tech}
+                                className="px-3 py-1.5 rounded-lg bg-secondary/60 border border-border/50 text-xs font-medium text-foreground/80 hover:border-primary/40 hover:text-primary transition-colors"
+                            >
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
+                </motion.div>
+                </div>
             </div>
 
             {/* Scroll indicator */}

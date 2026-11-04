@@ -93,7 +93,7 @@ export default function ContactFooter() {
                     className="flex items-center justify-center gap-2 mt-12 text-muted-foreground"
                 >
                     <MapPin className="w-4 h-4" />
-                    <span className="text-sm">Maadi, Egypt </span>
+                    <span className="text-sm">Giza, Egypt</span>
                 </motion.div>
             </div>
 
