@@ -26,6 +26,21 @@ function CompanyName({ company, linkedIn }) {
     );
 }
 
+// Matches user-count metrics such as "~1 million users" or "100K+ users".
+const userMetricPattern = /(~?\d+(?:K\+?| million)\+? users)/;
+
+function HighlightText({ text }) {
+    return text.split(userMetricPattern).map((part, i) =>
+        i % 2 === 1 ? (
+            <span key={i} className="font-semibold text-accent">
+                {part}
+            </span>
+        ) : (
+            part
+        )
+    );
+}
+
 export default function ExperienceCard({ experience, index }) {
     const { company, linkedIn, role, period, highlights, stack } = experience;
 
@@ -58,7 +73,9 @@ export default function ExperienceCard({ experience, index }) {
                     {highlights.map((h) => (
                         <li key={h} className="flex gap-3 text-sm text-muted-foreground leading-relaxed">
                             <span className="text-primary mt-1.5 shrink-0">▸</span>
-                            {h}
+                            <span>
+                                <HighlightText text={h} />
+                            </span>
                         </li>
                     ))}
                 </ul>

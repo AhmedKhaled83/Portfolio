@@ -17,8 +17,8 @@ export const profile = {
 
 export const heroStats = [
     { icon: Briefcase, value: "3+", label: "Years experience" },
-    { icon: Rocket, value: "10+", label: "Apps shipped" },
-    { icon: Users, value: "400K+", label: "Users reached" },
+    { icon: Rocket, value: "20+", label: "Apps & sites shipped" },
+    { icon: Users, value: "1M+", label: "Users reached" },
 ];
 
 export const heroTechStack = ["React Native", "React.js", "TypeScript", "Redux Toolkit", "Zustand", "TanStack Query"];
